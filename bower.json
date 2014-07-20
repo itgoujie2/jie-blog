@@ -1,0 +1,8 @@
+{
+	"name" : "jie-blog",
+	"dependencies" : {
+		"bootstrap" : "latest",
+		"angular" : "latest",
+		"angular-route" : "latest"
+	}
+}

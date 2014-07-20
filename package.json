@@ -1,0 +1,11 @@
+{
+	"name" : "jie-blog",
+	"author" : "Jie Gou",
+	"version" : "0.0.0",
+	"description" : "blog with node/angular/express/mongodb",
+	"dependencies" : {
+		"express" : "latest",
+		"mongodb" : "latest",
+		"body-parser" : "latest"
+	}
+}

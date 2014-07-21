@@ -1,0 +1,30 @@
+<!doctype html>
+<html ng-app="jie-blog">
+
+<head>
+	<title>Jie Gou Blog</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
+
+	<!-- SCRIPT -->
+	<script src="libs/angular/angular.min.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<div id="header">
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/addPost">Add Post</a></li>
+			</ul>
+		</div>
+
+		<div ng-view></div>
+	</div>
+</body>
+
+
+</html>

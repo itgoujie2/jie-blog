@@ -1,12 +1,12 @@
-angular.module('jie-blog', ['ctrlModule'])
-	.config([$routeProvider, $locationProvider, function($routeProvider, $locationProvider){
+angular.module('jie-blog', ['ctrlModule', 'ngRoute'])
+	.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
 		$routeProvider
 			.when('/', {
-				templateUrl : 'views/partials/index',
+				templateUrl : '/views/partials/index.html',
 				controller : 'IndexCtrl'
 			})
 			.when('/addPost', {
-				templateUrl : 'views/partials/addPost',
+				templateUrl : '/views/partials/addPost.html',
 				controller : 'AddPostCtrl'
 			})
 			.when('/readPost/:id', {
@@ -14,14 +14,16 @@ angular.module('jie-blog', ['ctrlModule'])
 				controller : 'ReadPostCtrl'
 			})
 			.when('/editPost/:id', {
-				templateUrl : 'views/partials/editPost',
+				templateUrl : '/views/partials/editPost.html',
 				controller : 'EditPostCtrl'
 			})
 			.when('/deletePost/:id', {
-				templateUrl : 'views/partials/deletePost',
+				templateUrl : '/views/partials/deletePost.html',
 				controller : 'DeletePostCtrl'
 			})
 			.otherwise({
 				redirectTo : '/'
 			});
+
+		$locationProvider.html5Mode(true);
 	}]);

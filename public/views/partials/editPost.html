@@ -1,8 +1,10 @@
 <h2>Edit Post</h2>
 
 <form>
-	<label for="title">Title: </label>
-	<input ng-model="form.title" name="title">
-	<textarea ng-model="form.text" cols="50" rows="15">
+	<tr>
+		<label for="title">Title: </label>
+		<input ng-model="form.title" name="title">
+	</tr>
+	<tr><textarea ng-model="form.text" cols="50" rows="15"></textarea></tr>
 	<button ng-click="editPost()">Edit Post</button>
 </form>

@@ -3,7 +3,7 @@ Hello
 
 <div ng-repeat="post in posts">
 	<h3>{{post.title}}</h3>
-	<div>{{post.text}}</div>
+	<div>{{post.text | limitTo:50}}</div>
 	<a href="readPost/{{post._id}}">More</a>
 	<a href="editPost/{{post._id}}">Edit</a>
 	<a href="deletePost/{{post._id}}">Delete</a>

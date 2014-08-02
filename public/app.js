@@ -10,7 +10,7 @@ angular.module('jie-blog', ['ctrlModule', 'ngRoute'])
 				controller : 'AddPostCtrl'
 			})
 			.when('/readPost/:id', {
-				templateUrl : 'views/partials/readPost',
+				templateUrl : '/views/partials/readPost.html',
 				controller : 'ReadPostCtrl'
 			})
 			.when('/editPost/:id', {

@@ -62,3 +62,10 @@ ctrlModule.controller('EditPostCtrl', function($http, $scope, $location, $routeP
 			});
 	};
 });
+
+ctrlModule.controller('ReadPostCtrl', function($http, $scope, $routeParams){
+	$http.get('/api/post/' + $routeParams.id)
+		.success(function(data){
+			$scope.post = data;
+		});
+});

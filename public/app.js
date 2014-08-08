@@ -21,6 +21,14 @@ angular.module('jie-blog', ['ctrlModule', 'ngRoute'])
 				templateUrl : '/views/partials/deletePost.html',
 				controller : 'DeletePostCtrl'
 			})
+			.when('/login', {
+				templateUrl : '/views/partials/login.html',
+				controller : 'LoginCtrl'
+			})
+			.when('/signup', {
+				templateUrl : '/views/partials/signup.html',
+				controller : 'SignUpCtrl'
+			})
 			.otherwise({
 				redirectTo : '/'
 			});

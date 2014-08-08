@@ -6,6 +6,13 @@
 	"dependencies" : {
 		"express" : "latest",
 		"mongoose" : "latest",
-		"body-parser" : "latest"
+		"body-parser" : "latest",
+		"morgan" : "latest", 
+		"cookie-parser" : "latest", 
+		"connect-flash" : "latest",
+		"express-session" : "latest",
+		"passport" : "latest",
+		"bcrypt-nodejs" : "latest",
+		"passport-local" : "latest"
 	}
 }

@@ -69,3 +69,27 @@ ctrlModule.controller('ReadPostCtrl', function($http, $scope, $routeParams){
 			$scope.post = data;
 		});
 });
+
+ctrlModule.controller('LoginCtrl', function($http, $scope, $location){
+	$scope.login = function(){
+		$http.post('/login', {
+			email : $scope.email,
+			password : $scope.password
+		})
+			.success(function(data){
+				$location.path('/');
+			});
+	};
+});
+
+ctrlModule.controller('SignUpCtrl', function($http, $scope, $location){
+	$scope.signup = function(){
+		$http.post('/signup', {
+			email : $scope.email,
+			password : $scope.password
+		})
+			.success(function(data){
+				$location.path('/');
+			});
+	}
+});

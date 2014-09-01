@@ -22,6 +22,10 @@ app.use(session({secret : 'iamthebesthacker'}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+app.use(function(err, req, res, next){
+  res.status(500);
+  res.redirect('/');
+});
 
 require('./config/passport')(passport);
 require('./app/routes')(app, passport);

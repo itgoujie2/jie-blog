@@ -77,7 +77,11 @@ ctrlModule.controller('LoginCtrl', function($http, $scope, $location){
 			password : $scope.password
 		})
 			.success(function(data){
+				console.log('user : ' + data);
 				$location.path('/');
+			})
+			.error(function(data){
+				$location.path('/login');
 			});
 	};
 });
@@ -90,6 +94,9 @@ ctrlModule.controller('SignUpCtrl', function($http, $scope, $location){
 		})
 			.success(function(data){
 				$location.path('/');
+			})
+			.error(function(data){
+				$location.path('/signup');
 			});
 	}
 });

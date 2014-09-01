@@ -66,22 +66,34 @@ module.exports = function(app, passport){
 		});
 	});
 
-	// app.post('/signup', passport.authenticate('local-signup'), function(req, res){
-	// 	//res.cookie('user', JSON.stringify(req, user));
-	// 	//res.send(req.user);
-	// 	res.redirect('/');
-	// });
-	app.post('/signup', function(req, res, next) {
-		console.log(req.body.email);
-	  User.create({
-	  	email : req.body.email,
-	  	password : req.body.password
-	  }, function(err, user){
-	  	if (err) res.send(err);
+	// app.post('/signup', function(req, res, next) {
+	// 	console.log(req.body.email);
+	//   User.create({
+	//   	email : req.body.email,
+	//   	password : req.body.password
+	//   }, function(err, user){
+	//   	if (err) res.send(err);
 
-	  });
-	  res.send(200);
+	//   });
+	//   res.send(200);
+	// });
+	app.post('/signup', function(req, res, next){
+
+		var user = new User({
+			email : req.body.email,
+			password : req.body.password
+		});
+
+		user.save(function(err){
+			if (err) {
+				console.log(err);
+				return next(err);
+			}
+
+			res.send(200);
+		});
 	});
+
 
 	app.get('*', function(req, res){
 		res.redirect('/');
@@ -90,7 +102,8 @@ module.exports = function(app, passport){
 	app.post('/login', passport.authenticate('local-login'), function(req, res){
 		//res.redirect('/');
 		console.log('yes');
-		res.send(200);
+		//res.status(200).end();
+		res.json({user : req.user});
 	});
 
 

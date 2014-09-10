@@ -12,7 +12,12 @@
 		"connect-flash" : "latest",
 		"express-session" : "latest",
 		"passport" : "latest",
-		"bcrypt-nodejs" : "latest",
-		"passport-local" : "latest"
+		"passport-local" : "latest", 
+		"nconf" : "latest",
+		"oauth2orize" : "latest",
+		"passport-http" : "latest",
+		"passport-oauth2-client-password" : "latest",
+		"passport-http-bearer" : "latest",
+		"Faker" : "latest"
 	}
 }

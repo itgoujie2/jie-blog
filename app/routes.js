@@ -1,6 +1,9 @@
 var Post = require('./models/post');
 var User = require('./models/user');
 var mongoose = require('mongoose');
+var oauth2 = require('../config/oauth2');
+
+require('../config/oauth');
 
 module.exports = function(app, passport){
 
@@ -99,11 +102,15 @@ module.exports = function(app, passport){
 		res.redirect('/');
 	});
 
-	app.post('/login', passport.authenticate('local-login'), function(req, res){
-		//res.redirect('/');
-		console.log('yes');
-		//res.status(200).end();
-		res.json({user : req.user});
+	// app.post('/login', passport.authenticate('local-login'), function(req, res){
+	// 	//res.redirect('/');
+	// 	console.log('yes');
+	// 	//res.status(200).end();
+	// 	res.json({user : req.user});
+	// });
+	app.post('/login', function(req, res){
+		console.log('called'),
+		oauth2.token	
 	});
 
 

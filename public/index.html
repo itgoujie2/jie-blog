@@ -5,32 +5,55 @@
 	<title>Jie Gou Blog</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
 	<!-- CSS -->
 	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
+
+	<style>
+		nav {
+			background-image: url("file://assets/banner.jpg");
+		}
+		footer {
+			position: absolute;
+			bottom: 0;
+		}
+	</style>
+</head>
+
+<body>
+	<div>
+		<header>
+			<nav class="navbar navbar-inverse navbar-fixed-top">
+				<div class="container">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="/">Jie Gou</a>
+					</div>
+					<div class="collapse navbar-collapse">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="#">Blog</a></li>
+							<li><a href="#">About</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+
+		<div class="container">
+			<div ng-view></div>
+		</div>
+		
+
+		<footer class="footer">
+			I am footer
+		</footer>
+		
+	</div>
+
 
 	<!-- SCRIPT -->
 	<script src="libs/angular/angular.js"></script>
 	<script src="libs/angular-route/angular-route.min.js"></script>
 	<script src="app.js"></script>
 	<script src="controllers/controller.js"></script>
-</head>
-
-<body>
-	<div>
-		<div id="header">
-			<ul>
-				<li><a href="/">Home</a></li>
-				<li><a href="/addPost">Add Post</a></li>
-				<li><a href="/login">Login</a></li>
-			</ul>
-		</div>
-
-		<div class="container">
-			<div ng-view></div>
-		</div>
-	</div>
-
 </body>
 
 

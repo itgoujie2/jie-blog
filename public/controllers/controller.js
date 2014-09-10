@@ -70,14 +70,19 @@ ctrlModule.controller('ReadPostCtrl', function($http, $scope, $routeParams){
 		});
 });
 
-ctrlModule.controller('LoginCtrl', function($http, $scope, $location){
+ctrlModule.controller('LoginCtrl', function($http, $scope, $location, $rootScope){
 	$scope.login = function(){
-		$http.post('/login', {
-			email : $scope.email,
+		var info = {
+			grant_type : 'password',
+			client_id : 'jie',
+			client_secret : 'Aa19890301',
+			username : $scope.email,
 			password : $scope.password
-		})
+		};
+		$http.post('/login', info)
 			.success(function(data){
-				console.log('user : ' + data);
+				$rootScope.access_token = data.access_token;
+				$rootScope.refresh_token = data.refresh_token;
 				$location.path('/');
 			})
 			.error(function(data){

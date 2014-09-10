@@ -8,9 +8,10 @@ var flash = require('connect-flash');
 var morgon = require('morgan');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
-var port = process.env.PORT || 3000;
+var config = require(__dirname + '/config/config');
+var port = config.get('port');
 
-mongoose.connect(db.url);
+mongoose.connect(config.get('mongoose:url'));
 
 app.use(morgon('dev'));
 app.use(express.static(__dirname + '/public'));

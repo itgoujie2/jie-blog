@@ -1,20 +1,43 @@
+var crypto = require('crypto');
 var mongoose = require('mongoose');
-var bcrypt = require('bcrypt-nodejs');
 
-var userSchema = new mongoose.Schema({
-	email : {type : String, unique : true},
-	password : String
+var User = new mongoose.Schema({
+	username : {
+		type : String,
+		unique : true,
+		required : true
+	},
+	hashedPassword : {
+		type : String,
+		required : true
+	},
+	salt : {
+		type : String,
+		required : true
+	},
+	created : {
+		type : Date,
+		default : Date.now
+	}
 });
 
-userSchema.methods.generateHash = function(password){
-	return bcrypt.hashSync(password, bcrypt.genSaltSync(), null);
+User.methods.encryptPassword = function(password){
+	return crypto.pbkdf2Sync(password, this.salt, 10000, 512);
 };
 
-userSchema.methods.comparePassword = function(candidatePassword, cb) {
-  bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-    if (err) return cb(err);
-    cb(null, isMatch);
-  });
-};
+User.virtual('userId')
+	.get(function(){
+		return this.id;
+	});
 
-module.exports = mongoose.model('User', userSchema);
+User.virtual('password')
+	.set(function(password){
+		this._plainPassword = password,
+		this.salt = crypto.randomBytes(128).toString('base64');
+		this.hashedPassword = this.encryptPassword(password);
+	})
+	.get(function(){
+		return this._plainPassword;
+	});
+
+module.exports.UserModel = mongoose.model('User', User);
